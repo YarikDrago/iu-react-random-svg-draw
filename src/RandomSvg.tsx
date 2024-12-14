@@ -9,6 +9,8 @@ type RandomSvgProps = {
     minLifetimeMs?: number;
     /** The maximum lifetime of a displayed element */
     maxLifetimeMs?: number;
+    /** user's images */
+    userImages?: string[];
 };
 
 type ElemProps = {
@@ -20,8 +22,9 @@ const RandomSvg = ({
                        amount = 3,
                        minLifetimeMs = 500,
                        maxLifetimeMs = 1000,
+                       userImages
                    }: RandomSvgProps) => {
-    const images = [queenIcon, snowFlake2];
+    const images = userImages || [queenIcon, snowFlake2];
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [loadedImages, setLoadedImages] = useState<HTMLImageElement[]>([]);
     const loadedImagesRef = useRef<HTMLImageElement[]>([]);
